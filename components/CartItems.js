@@ -8,11 +8,7 @@ let items = [];
     category.push(product.category);
   });
 }
-// const item = () => {
-// footWears.map()
-//  return footWears.map(({ id, name }) => {
-//    return;
-//  });
+
 const CartItems = () => {
   const dispatch = useDispatch();
   return (

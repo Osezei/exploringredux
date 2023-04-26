@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CartItems from "./CartItems";
+import CartItem from "./CartItem";
 
 const CartContainer = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const CartContainer = () => {
       </header>
       <div>
         {CartItems.map((item) => {
-          return <CartItems key={item.id} {...item} />;
+          return <CartItem key={item.id} {...item} />;
         })}
       </div>
     </section>
