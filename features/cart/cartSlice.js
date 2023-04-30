@@ -1,18 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { footwears } from "../../data/Data.js";
+import axios from "axios";
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 const initialState = {
-  cartItems: footwears,
-  amount: 1,
+  cartItems: [],
+  amount: 4,
   total: 0,
   isLoading: true,
 };
 
-// export const getCartItems = () => {
-//   return footwears.map(({ id }) => {
-//     return;
-//   });
-// };
+export const getCartItems = createAsyncThunk(
+  "cart/getCartItems",
+  async (name, thunkAPI) => {
+    try {
+      const resp = await axios(url);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("something went wrong with the api");
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
